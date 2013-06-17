@@ -1,4 +1,4 @@
--module(probs_11_to_20).
+-module(p_11_to_20).
 -include_lib("eunit/include/eunit.hrl").
 -import(probs_1_to_10, [my_pack/1]).
 -export([my_encode_modified/1, my_decode_modified/1, my_encode_direct/1]).

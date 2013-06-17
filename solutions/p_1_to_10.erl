@@ -1,16 +1,14 @@
--module(probs_1_to_10).
+-module(p_1_to_10).
 -include_lib("eunit/include/eunit.hrl").
 -export([my_last/1, my_but_last/1, element_at/2, my_length/1, my_reverse/1, is_palindrome/1, my_flatten/1, my_compress/1, my_pack/1, my_encode/1]).
 
 
 %% Problem 1: Find the last element of a list.
-my_last([]) -> erlang:error({illegal_argument, "List cannot be empty"});
 my_last([H|[]]) -> H;
 my_last([_|T]) -> my_last(T).
 
 
 %% Problem 2: Find the second last element of a list.
-my_but_last([]) -> erlang:error({illegal_argument, "List doesn't have enough elements"});
 my_but_last([H|[_|[]]]) -> H;
 my_but_last([_|T]) -> my_but_last(T).
 
@@ -18,8 +16,6 @@ my_but_last([_|T]) -> my_but_last(T).
 %% Problem 3: Find the N'th element of a list. The first element in the list is number 1.
 element_at([H|_], 1) -> H;
 element_at([_|T], N) when N > 1 -> element_at(T, N - 1);
-element_at(_, N) when N < 1 -> erlang:error({illegal_argument, "Index must be greater than 1"});
-element_at([], _) -> erlang:error({illegal_argument, "Index larger than list size"}).
 
 
 %% Problem 4: Find the number of elements in a list.
