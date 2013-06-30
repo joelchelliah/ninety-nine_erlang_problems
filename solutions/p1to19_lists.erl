@@ -37,8 +37,7 @@ my_compress(List) -> lists:foldr(fun my_compress/2, [], List).
 my_compress(H, Acc) ->
   case Acc of
     [H|T] -> [H|T];
-    [H2|T] -> [H,H2|T];
-    _ -> [H]
+    _ -> [H|Acc]
   end.
 
 
@@ -47,8 +46,7 @@ my_pack(List) -> lists:foldr(fun my_pack/2, [], List).
 my_pack(H, Acc) ->
   case Acc of
     [[H|SubT]|T] -> [[H,H|SubT]|T];
-    [Sub|T] -> [[H],Sub|T];
-    _ -> [[H]]
+    _ -> [[H]|Acc]
   end.
 
 

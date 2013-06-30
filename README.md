@@ -3,11 +3,12 @@
 
 #### Based on [L-99: Ninety-Nine Lisp Problems](http://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html) ####
 
-I'm making some slight changes to the problem descriptions to make them fit more to Erlang code, but they should still be pretty similar to the original Lisp problems.
+I'm making some slight changes to the problem descriptions so that they make more sense from an Erlang point of view, but they should still be pretty similar to the original Lisp problems.  
 Will be adding more problems and examples to the list below, as I work my way through them.
+</br>
 
-**Current status:** 27/99
-</br></br>
+**Current status:** 30/99
+</br></br></br>
 
 ---
 
@@ -261,7 +262,7 @@ Generate the combinations of K distinct objects chosen from the N elements of a 
 **Problem 27**  
 How many ways can you group the elements of a set of size 9 into 3 disjoint subsets of sizes 2,3 and 4? Write a function that generates all the possibilities and returns them in a list. Note that we do not want permutations of the group members; i.e. [[a, b], ...] is the same solution as [[b, a], ...]. However, we make a difference between [[a, b], [c, d, ...], ...] and [[c, d], [a, b, ...], ...].
 ```erl
-14> p20to30_lists:my_group3([a,b,c,d,e,f,g,h,i]).
+1> p20to30_lists:my_group3([a,b,c,d,e,f,g,h,i]).
 [[[a,b],[c,d,e],[f,g,h,i]],
  [[a,b],[c,d,f],[e,g,h,i]],
  [[a,b],[c,d,h],[e,f,g,i]],
@@ -269,15 +270,40 @@ How many ways can you group the elements of a set of size 9 into 3 disjoint subs
  ...
 ```
 
+---
 
-.
+**Problem 28**  
+Generalize the above function in a way that we can specify a list of subset sizes. The number of disjoint subsets in each group should be equal to length of the list of subset sizes.
+```erl
+1> p20to30_lists:my_group3_generalized([a,b,c,d,e,f,g,h,i], [2,2,3,2]).
+[[[a,b],[c,d],[e,f,g],[h,i]],
+ [[a,b],[c,d],[e,f,h],[g,i]],
+ [[a,b],[c,d],[e,f,i],[g,h]],
+ [[a,b],[c...
+ ...
+```
 
-.
+---
 
-.
+**Problem 29**  
+We suppose that a list contains elements that are lists themselves. The objective is to sort the elements of this list according to their length. E.g. short lists first, longer lists later.
+```erl
+1> p20to30_lists:my_lsort([[a,b,c], [a,b], [o]]).           
+[[o],[a,b],[a,b,c]]
+2> p20to30_lists:my_lsort(["coding", "Erlang!", "am", "I"]).           
+["I","am","coding","Erlang!"]
+```
 
+---
 
-</br></br>
+**Problem 30**  
+Again, we suppose that a list contains elements that are lists themselves. But this time the objective is to sort the elements of this list according to their length frequency; i.e., in the default, where sorting is done ascendingly, lists with rare lengths are placed first, others with a more frequent length come later. Note that in the example below, the first two lists in the result have length 4 and 1, both lengths appear just once. The third and forth list have length 3 which appears twice (there are two list of this length). And finally, the last three lists have length 2. This is the most frequent length.
+```erl
+1> p20to30_lists:my_lfsort([[a,b,c],[d,e],[f,g,h],[d,e],[i,j,k,l],[m,n],[o]]).
+[[o],[i,j,k,l],[f,g,h],[a,b,c],[m,n],[d,e],[d,e]]
+```
+
+</br>
 
 ---
 
