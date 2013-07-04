@@ -3,13 +3,14 @@
 
 #### Based on [L-99: Ninety-Nine Lisp Problems](http://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html) ####
 
-I'm making some slight changes to the problem descriptions so that they make more sense from an Erlang point of view, but they should still be pretty similar to the original Lisp problems.  
-Will be adding more problems and examples to the list below, as I work my way through them.
-</br>
+The problems are modified versions of the original **99 Lisp/Prolog problems**, with some minor changes so that they make more sense from an Erlang point of view.  
+Will be adding more descriptions and examples below as I work my way through them.  
+</br></br>
 
-**Current status:** 30/99
+**Current status:** 42/99
 </br></br></br>
 
+---
 ---
 
 #### List Problems (1-30): ####
@@ -303,18 +304,131 @@ Again, we suppose that a list contains elements that are lists themselves. But t
 [[o],[i,j,k,l],[f,g,h],[a,b,c],[m,n],[d,e],[d,e]]
 ```
 
-</br>
+</br></br></br>
 
+---
 ---
 
 #### Arithmetic Problems (31-41):  ####
 
 ---
 
-.
+**Problem 31**  
+Determine whether a given integer number is prime.
+```erl
+1> p31to45_arithmetic:my_is_prime(131).
+true
+2> p31to45_arithmetic:my_is_prime(133).
+false
+```
+
+---
+
+**Problem 32**  
+Determine the greatest common divisor of two positive integer numbers. Use Euclid's algorithm.
+```erl
+1> p31to45_arithmetic:my_gcd(1071, 462).
+21
+```
+
+---
+
+**Problem 33**  
+Determine whether two positive integer numbers are coprime. Two numbers are coprime if their greatest common divisor equals 1.
+```erl
+1> p31to45_arithmetic:my_is_coprime(1234, 4321).
+true
+```
+
+---
+
+**Problem 34**  
+Calculate Euler's totient function phi(m). Euler's so-called totient function phi(m) is defined as the number of positive integers r (1 <= r < m) that are coprime to m.
+```erl
+1> p31to45_arithmetic:my_totient_phi(315).
+144
+```
+
+---
+
+**Problem 35**  
+Determine the prime factors of a given positive integer. Construct a flat list containing the prime factors in ascending order.
+```erl
+1> p31to45_arithmetic:my_prime_factors(3162).
+[2,3,17,31]
+```
+
+---
+
+**Problem 36**  
+Given a positive integer, construct a list containing the prime factors and their multiplicity.
+```erl
+1> p31to45_arithmetic:my_prime_factors_mult(315).
+[{3,2},{5,1},{7,1}]
+```
+
+---
+
+**Problem 37**  
+Calculate Euler's totient function phi(m) (improved). See problem 34 for the definition of Euler's totient function. If the list of the prime factors of a number m is known in the form of problem 36 then the function phi(m) can be efficiently calculated as follows: Let [{p1, m1}, {p2, m2}, {p3, m3}, ...] be the list of prime factors (and their multiplicities) of a given number m. Then phi(m) can be calculated with the following formula:  
+phi(m) = (p1 - 1) * p1^(m1 - 1) * (p2 - 1) * p2^(m2 - 1) * (p3 - 1) * p3^(m3 - 1) * ...
+```erl
+1> p31to45_arithmetic:my_totient_phi_improved(315).
+144
+```
+
+---
+
+**Problem 38**  
+Compare the two methods of calculating Euler's totient function. Use the solutions of problems 34 and 37 to compare the algorithms. Take the number of reductions as a measure for efficiency. Try to calculate phi(10090) as an example.
+```erl
+1> p31to45_arithmetic:my_totient_compare(315).
+      ___
+     (o,o)  No solution required.
+     {'"'}
+   ==="="=======
+```
+
+---
+
+**Problem 39**  
+Given a range of integers by its lower and upper limit, construct a list of all prime numbers in that range.
+```erl
+1> p31to45_arithmetic:my_primes_range(1, 42).
+[2,3,5,7,11,13,17,19,23,29,31,37,41]
+```
+
+---
+
+**Problem 40**  
+Goldbach's conjecture says that every positive even number greater than 2 is the sum of two prime numbers. Example: 28 = 5 + 23. It is one of the most famous facts in number theory that has not been proved to be correct in the general case. It has been numerically confirmed up to very large numbers (much larger than we can go with our Prolog system). Write a function to find the two prime numbers that sum up to a given even integer.
+```erl
+1> p31to45_arithmetic:my_goldbach(316).
+{3,313}
+```
+
+---
+
+**Problem 41**  
+Given a range of integers by its lower and upper limit, print a list of all even numbers and their Goldbach composition.
+```erl
+1> p31to45_arithmetic:my_goldbach_list(41, 49).
+[{42,{5,37}},{44,{3,41}},{46,{3,43}},{48,{5,43}}]
+```
+
+---
+
+**Problem 42**  
+In most cases, if an even number is written as the sum of two prime numbers, one of them is very small. Very rarely, the primes are both bigger than N. Try to find out how many such cases there are in the range L...H.
+```erl
+1> p31to45_arithmetic:my_goldbach_list(1500, 1600, 25).
+[{1520,{31,1489}},{1532,{43,1489}}]
+```
 
 .
 
 .
 
-WIP! (｡◕‿◕｡)
+.
+
+in progress...
